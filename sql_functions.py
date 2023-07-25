@@ -4,7 +4,7 @@
 import sqlalchemy 
 import pandas as pd
 from dotenv import dotenv_values
-​
+
 def get_sql_config():
     '''
         Function loads credentials from .env file and
@@ -14,9 +14,6 @@ def get_sql_config():
     dotenv_dict = dotenv_values(".env")
     sql_config = {key:dotenv_dict[key] for key in needed_keys if key in dotenv_dict}
     return sql_config
-​
-​
-​
 
 # Insert the get_data() function definition below - do this only when instructed in the notebook
 def get_data(our_query):
@@ -30,8 +27,6 @@ def get_data(our_query):
         results = conn.execute(our_query)
         print(conn.execute(our_query).fetchall())
          
-​
-​
 # Insert the get_dataframe() function definition below - do this only when instructed in the notebook
 def get_dataframe(sql_query):
     ''' 
@@ -41,7 +36,7 @@ def get_dataframe(sql_query):
     engine = sqlalchemy.create_engine('postgresql://user:pass@host/database',
                         connect_args=get_sql_config())
     return pd.read_sql_query(sql=sql_query, con=engine)
-​
+
 # Insert the get_engine() function definition below - when instructed
 def get_engine():
     sql_config = get_sql_config()
